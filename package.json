@@ -7,9 +7,11 @@
     "packages/*"
   ],
   "scripts": {
-    "server:dev": "pnpm -r run dev",
-    "server:build": "pnpm -r run build",
-    "server:start": "pnpm -r run start"
+    "server:dev": "pnpm --filter @bud/server run dev",
+    "server:build": "pnpm --filter @bud/server run build",
+    "server:start": "pnpm --filter @bud/server run start",
+    "client:dev": "pnpm --filter @bud/client run dev",
+    "client:build": "pnpm --filter @bud/client run build"
   },
   "license": "MIT",
   "devDependencies": {

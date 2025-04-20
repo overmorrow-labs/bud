@@ -1,5 +1,5 @@
 {
-  "name": "bud-server",
+  "name": "@bud/server",
   "version": "0.0.1",
   "description": "A robust Fastify server with TypeScript, ready for development and npm packaging.",
   "main": "dist/server.js",
