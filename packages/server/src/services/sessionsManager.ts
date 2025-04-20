@@ -30,4 +30,20 @@ export class SessionsManager {
       sessionId: sessionIdLocal,
     };
   }
+
+  // async getMessages(sessionId: string) {
+  //   const collection = dbClient.db("langchain").collection("memory");
+  //   const sessionIdLocal = sessionId ?? new ObjectId().toString();
+  //   const memory = new BufferMemory({
+  //     chatHistory: new MongoDBChatMessageHistory({
+  //       collection,
+  //       sessionId: sessionIdLocal,
+  //     }),
+  //   });
+  //   // ----------------------------------------
+  //   const historyMessages = await memory.chatHistory.getMessages();
+  //   historyMessages.forEach((message) => {
+  //     console.log({ message: message.content });
+  //   });
+  // }
 }
