@@ -7,22 +7,43 @@ settings:
 importers:
 
   .:
-    devDependencies:
-      typescript:
-        specifier: ^5.4.5
-        version: 5.8.3
-
-  packages/client:
     dependencies:
+      '@fastify/autoload':
+        specifier: ^6.3.0
+        version: 6.3.0
+      '@fastify/sensible':
+        specifier: ^6.0.3
+        version: 6.0.3
       '@floating-ui/react':
         specifier: ^0.27.7
         version: 0.27.7(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@langchain/core':
+        specifier: ^0.3.45
+        version: 0.3.45(openai@4.95.1(zod@3.24.3))
+      '@langchain/mongodb':
+        specifier: ^0.1.0
+        version: 0.1.0(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3)))
+      '@langchain/ollama':
+        specifier: ^0.2.0
+        version: 0.2.0(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3)))
       '@tailwindcss/vite':
         specifier: ^4.1.4
         version: 4.1.4(vite@6.3.2(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      dotenv:
+        specifier: ^16.5.0
+        version: 16.5.0
+      fastify:
+        specifier: ^5.3.1
+        version: 5.3.1
+      langchain:
+        specifier: ^0.3.23
+        version: 0.3.23(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3)))(@langchain/ollama@0.2.0(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3))))(openai@4.95.1(zod@3.24.3))
+      mongodb:
+        specifier: ^6.15.0
+        version: 6.15.0
       react:
         specifier: ^19.0.0
         version: 19.1.0
@@ -35,6 +56,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.4
         version: 4.1.4
+      zod:
+        specifier: ^3.24.3
+        version: 3.24.3
     devDependencies:
       '@eslint/js':
         specifier: ^9.22.0
@@ -63,6 +87,9 @@ importers:
       globals:
         specifier: ^16.0.0
         version: 16.0.0
+      ts-node-dev:
+        specifier: ^2.0.0
+        version: 2.0.0(@types/node@22.14.1)(typescript@5.7.3)
       typescript:
         specifier: ~5.7.2
         version: 5.7.3
@@ -79,45 +106,9 @@ importers:
         specifier: ^2.2.2
         version: 2.2.2(vite@6.3.2(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
 
-  packages/server:
-    dependencies:
-      '@fastify/autoload':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@fastify/sensible':
-        specifier: ^6.0.3
-        version: 6.0.3
-      '@langchain/core':
-        specifier: ^0.3.45
-        version: 0.3.45(openai@4.95.1(zod@3.24.3))
-      '@langchain/mongodb':
-        specifier: ^0.1.0
-        version: 0.1.0(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3)))
-      '@langchain/ollama':
-        specifier: ^0.2.0
-        version: 0.2.0(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3)))
-      dotenv:
-        specifier: ^16.5.0
-        version: 16.5.0
-      fastify:
-        specifier: ^5.3.1
-        version: 5.3.1
-      langchain:
-        specifier: ^0.3.23
-        version: 0.3.23(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3)))(@langchain/ollama@0.2.0(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3))))(openai@4.95.1(zod@3.24.3))
-      mongodb:
-        specifier: ^6.15.0
-        version: 6.15.0
-      zod:
-        specifier: ^3.24.3
-        version: 3.24.3
-    devDependencies:
-      ts-node-dev:
-        specifier: ^2.0.0
-        version: 2.0.0(@types/node@22.14.1)(typescript@5.8.3)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.8.3
+  packages/client: {}
+
+  packages/server: {}
 
 packages:
 
@@ -1867,6 +1858,7 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
+    deprecated: Use your platform's native DOMException instead
 
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
@@ -2305,11 +2297,6 @@ packages:
 
   typescript@5.8.2:
     resolution: {integrity: sha512-aJn6wq13/afZp/jT9QZmwEjDqqvSGp1VT5GVg+f/t6/oVyrgXM6BY1h9BRh/O5p3PlUPAe+WuiEZOmb/49RqoQ==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
-  typescript@5.8.3:
-    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -4485,7 +4472,7 @@ snapshots:
     dependencies:
       typescript: 5.7.3
 
-  ts-node-dev@2.0.0(@types/node@22.14.1)(typescript@5.8.3):
+  ts-node-dev@2.0.0(@types/node@22.14.1)(typescript@5.7.3):
     dependencies:
       chokidar: 3.6.0
       dynamic-dedupe: 0.3.0
@@ -4495,15 +4482,15 @@ snapshots:
       rimraf: 2.7.1
       source-map-support: 0.5.21
       tree-kill: 1.2.2
-      ts-node: 10.9.2(@types/node@22.14.1)(typescript@5.8.3)
+      ts-node: 10.9.2(@types/node@22.14.1)(typescript@5.7.3)
       tsconfig: 7.0.0
-      typescript: 5.8.3
+      typescript: 5.7.3
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
       - '@types/node'
 
-  ts-node@10.9.2(@types/node@22.14.1)(typescript@5.8.3):
+  ts-node@10.9.2(@types/node@22.14.1)(typescript@5.7.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
@@ -4517,7 +4504,7 @@ snapshots:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.8.3
+      typescript: 5.7.3
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
@@ -4552,8 +4539,6 @@ snapshots:
   typescript@5.7.3: {}
 
   typescript@5.8.2: {}
-
-  typescript@5.8.3: {}
 
   ufo@1.6.1: {}
 
