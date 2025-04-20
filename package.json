@@ -7,6 +7,7 @@
     "packages/*"
   ],
   "scripts": {
+    "shared:build": "pnpm --filter @bud/shared run build",
     "server:dev": "pnpm --filter @bud/server run dev",
     "server:build": "pnpm --filter @bud/server run build",
     "server:start": "pnpm --filter @bud/server run start",

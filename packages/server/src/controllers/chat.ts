@@ -1,26 +1,7 @@
 import { RouteHandlerMethod } from "fastify";
-import { z } from "zod";
 import { SessionsManager } from "../services/sessionsManager";
 import { requestValidator } from "../utils/requestValidator";
-import { ObjectId } from "mongodb";
-
-const headersSchema = z.object({
-  sessionid: z
-    .string()
-    .refine((val) => {
-      return ObjectId.isValid(val);
-    })
-    .optional(),
-});
-
-const bodySchema = z.object({
-  prompt: z.string(),
-});
-
-const replySchema = z.object({
-  response: z.string(),
-  sessionId: z.string(),
-});
+import { controllers } from "@bud/shared";
 
 // ---------------------------------------------------------------
 
@@ -45,9 +26,9 @@ export default (function (req, res) {
     },
     // ----------------------------------------
     {
-      headersSchema,
-      bodySchema,
-      replySchema,
+      headersSchema: controllers.chat.headersSchema,
+      bodySchema: controllers.chat.bodySchema,
+      replySchema: controllers.chat.replySchema,
       req,
       res,
     }

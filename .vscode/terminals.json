@@ -2,6 +2,13 @@
   "autorun": false,
   "terminals": [
     {
+      "name": "Shared:Build",
+      "command": "pnpm run shared:build",
+      "execute": true,
+      "open": true,
+      "focus": true
+    },
+    {
       "name": "Server:Dev",
       "command": "pnpm run server:dev",
       "execute": true,

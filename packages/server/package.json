@@ -15,6 +15,9 @@
     "typescript",
     "server"
   ],
+  "dependencies": {
+    "@bud/shared": "workspace:*"
+  },
   "author": "",
   "license": "MIT",
   "files": [

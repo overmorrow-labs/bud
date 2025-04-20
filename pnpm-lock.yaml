@@ -120,7 +120,20 @@ importers:
 
   packages/client: {}
 
-  packages/server: {}
+  packages/server:
+    dependencies:
+      '@bud/shared':
+        specifier: workspace:*
+        version: link:../shared
+
+  packages/shared:
+    dependencies:
+      mongoose:
+        specifier: ^8.13.2
+        version: 8.13.2
+      zod:
+        specifier: ^3.24.3
+        version: 3.24.3
 
 packages:
 
