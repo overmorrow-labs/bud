@@ -15,22 +15,23 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@floating-ui/react": "^0.27.7",
-    "@tailwindcss/vite": "^4.1.4",
-    "clsx": "^2.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-rnd": "^10.5.2",
-    "tailwindcss": "^4.1.4",
     "@fastify/autoload": "^6.3.0",
     "@fastify/sensible": "^6.0.3",
+    "@floating-ui/react": "^0.27.7",
     "@langchain/core": "^0.3.45",
     "@langchain/mongodb": "^0.1.0",
     "@langchain/ollama": "^0.2.0",
+    "@tailwindcss/vite": "^4.1.4",
+    "axios": "^1.8.4",
+    "clsx": "^2.1.1",
     "dotenv": "^16.5.0",
     "fastify": "^5.3.1",
     "langchain": "^0.3.23",
     "mongodb": "^6.15.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-rnd": "^10.5.2",
+    "tailwindcss": "^4.1.4",
     "zod": "^3.24.3"
   },
   "devDependencies": {
@@ -43,12 +44,12 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "ts-node-dev": "^2.0.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.26.1",
     "vite": "^6.3.1",
     "vite-plugin-dts": "^4.5.3",
-    "vite-plugin-lib-inject-css": "^2.2.2",
-    "ts-node-dev": "^2.0.0"
+    "vite-plugin-lib-inject-css": "^2.2.2"
   },
   "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971"
 }

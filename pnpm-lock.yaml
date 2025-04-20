@@ -29,6 +29,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.4
         version: 4.1.4(vite@6.3.2(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+      axios:
+        specifier: ^1.8.4
+        version: 1.8.4
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -40,7 +43,7 @@ importers:
         version: 5.3.1
       langchain:
         specifier: ^0.3.23
-        version: 0.3.23(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3)))(@langchain/ollama@0.2.0(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3))))(openai@4.95.1(zod@3.24.3))
+        version: 0.3.23(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3)))(@langchain/ollama@0.2.0(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3))))(axios@1.8.4)(openai@4.95.1(zod@3.24.3))
       mongodb:
         specifier: ^6.15.0
         version: 6.15.0
@@ -1052,6 +1055,9 @@ packages:
   avvio@9.1.0:
     resolution: {integrity: sha512-fYASnYi600CsH/j9EQov7lECAniYiBFiiAtBNuZYLA2leLe9qOvZzqYHFjtIj6gD2VMoMLP14834LFWvr4IfDw==}
 
+  axios@1.8.4:
+    resolution: {integrity: sha512-eBSYY4Y68NNlHbHBMdeDmKNtDgXWhQsJcGqzO3iLUM0GraQFSS9cVgPX5I9b3lbdFKyYoAEGAZF1DwhTaljNAw==}
+
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
@@ -1382,6 +1388,15 @@ packages:
 
   flatted@3.3.3:
     resolution: {integrity: sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==}
+
+  follow-redirects@1.15.9:
+    resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
 
   form-data-encoder@1.7.2:
     resolution: {integrity: sha512-qfqtYan3rxrnCk1VYaA4H+Ms9xdpPqvLZa6xmMgFvhO32x7/3J/ExcTd6qpxM0vH2GdMI+poehyBZvqfMTto8A==}
@@ -2001,6 +2016,9 @@ packages:
 
   prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+
+  proxy-from-env@1.1.0:
+    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
 
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
@@ -3397,6 +3415,14 @@ snapshots:
       '@fastify/error': 4.1.0
       fastq: 1.19.1
 
+  axios@1.8.4:
+    dependencies:
+      follow-redirects: 1.15.9
+      form-data: 4.0.2
+      proxy-from-env: 1.1.0
+    transitivePeerDependencies:
+      - debug
+
   balanced-match@1.0.2: {}
 
   base64-js@1.5.1: {}
@@ -3755,6 +3781,8 @@ snapshots:
 
   flatted@3.3.3: {}
 
+  follow-redirects@1.15.9: {}
+
   form-data-encoder@1.7.2: {}
 
   form-data@4.0.2:
@@ -3941,7 +3969,7 @@ snapshots:
 
   kolorist@1.8.0: {}
 
-  langchain@0.3.23(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3)))(@langchain/ollama@0.2.0(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3))))(openai@4.95.1(zod@3.24.3)):
+  langchain@0.3.23(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3)))(@langchain/ollama@0.2.0(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3))))(axios@1.8.4)(openai@4.95.1(zod@3.24.3)):
     dependencies:
       '@langchain/core': 0.3.45(openai@4.95.1(zod@3.24.3))
       '@langchain/openai': 0.5.6(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3)))
@@ -3958,6 +3986,7 @@ snapshots:
       zod-to-json-schema: 3.24.5(zod@3.24.3)
     optionalDependencies:
       '@langchain/ollama': 0.2.0(@langchain/core@0.3.45(openai@4.95.1(zod@3.24.3)))
+      axios: 1.8.4
     transitivePeerDependencies:
       - encoding
       - openai
@@ -4268,6 +4297,8 @@ snapshots:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
+
+  proxy-from-env@1.1.0: {}
 
   punycode@2.3.1: {}
 

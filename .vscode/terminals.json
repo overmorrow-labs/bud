@@ -10,7 +10,7 @@
     },
     {
       "name": "Server:Build",
-      "command": "pnpm run server:dev",
+      "command": "pnpm run server:build",
       "onlySingle": true,
       "execute": true,
       "open": true,
@@ -19,13 +19,14 @@
     {
       "name": "Client:Dev",
       "command": "pnpm run client:dev",
+      "split": "Server:Dev",
       "execute": true,
       "open": true,
       "focus": true
     },
     {
       "name": "Client:Build",
-      "command": "pnpm run client:dev",
+      "command": "pnpm run client:build",
       "onlySingle": true,
       "execute": true,
       "open": true,
