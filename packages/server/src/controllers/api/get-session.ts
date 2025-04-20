@@ -17,7 +17,6 @@ const replySchema = z.object({});
 export default (function (req, res) {
   requestValidator(
     async (props, res) => {
-      console.log({ props });
       return res.send();
     },
     {
