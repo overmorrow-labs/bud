@@ -1,5 +1,5 @@
-import getSession from "./get-session";
+import chat from "./chat";
 
 export const controllers = {
-  getSession,
+  chat,
 };

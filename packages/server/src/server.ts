@@ -10,7 +10,7 @@ import { dbClient } from "./services/db";
 
   // ---------------------------------------------------------------
 
-  server.get("/get-session", controllers.getSession);
+  server.post("/chat", controllers.chat);
 
   // ---------------------------------------------------------------
 

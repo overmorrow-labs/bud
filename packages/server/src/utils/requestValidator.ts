@@ -1,11 +1,15 @@
 import {
+  ContextConfigDefault,
   FastifyReply,
   FastifyRequest,
+  FastifySchema,
+  FastifyTypeProviderDefault,
   RawReplyDefaultExpression,
   RawRequestDefaultExpression,
   RawServerDefault,
+  RouteGenericInterface,
 } from "fastify";
-import { infer as ZodInfer, ZodObject } from "zod";
+import { ZodError, infer as ZodInfer, ZodObject } from "zod";
 
 type ValidationSchemas = {
   headersSchema?: ZodObject<any>;
@@ -16,7 +20,7 @@ type ValidationSchemas = {
 };
 
 type InferValidatedData<Schemas extends ValidationSchemas> = {
-  headersSchema: Schemas["headersSchema"] extends ZodObject<any>
+  headers: Schemas["headersSchema"] extends ZodObject<any>
     ? ZodInfer<Schemas["headersSchema"]>
     : undefined;
   body: Schemas["bodySchema"] extends ZodObject<any>
@@ -34,10 +38,14 @@ export const requestValidator = <Schemas extends ValidationSchemas>(
   onSuccess: (
     validatedData: InferValidatedData<Schemas>,
     res: FastifyReply<
+      RouteGenericInterface,
       RawServerDefault,
       RawRequestDefaultExpression,
       RawReplyDefaultExpression,
-      { Reply: ZodInfer<Schemas["replySchema"]> }
+      ContextConfigDefault,
+      FastifySchema,
+      FastifyTypeProviderDefault,
+      ZodInfer<Schemas["replySchema"]>
     >
   ) => Promise<FastifyReply>,
   data: Schemas & {
@@ -47,65 +55,50 @@ export const requestValidator = <Schemas extends ValidationSchemas>(
 ) => {
   const { req, res, bodySchema, headersSchema, paramsSchema, querySchema } =
     data;
-  const errors: Record<string, any> = {};
   const validatedData: Partial<InferValidatedData<Schemas>> = {};
 
-  // Validate headers if schema is provided
-  if (headersSchema && req.headers) {
-    const result = headersSchema.safeParse(req.headers);
-    if (result.success) {
-      validatedData.headersSchema = result.data as any;
-    } else {
-      errors.headers = result.error.format();
-    }
-  }
+  console.log(req.headers);
 
-  // Validate body if schema is provided
-  if (bodySchema && req.body) {
-    const result = bodySchema.safeParse(req.body);
-    if (result.success) {
+  try {
+    if (headersSchema) {
       // TODO: Replace with proper typing
-      validatedData.body = result.data as any;
-    } else {
-      errors.body = result.error.format();
+      validatedData.headers = headersSchema.parse(req.headers) as any;
     }
-  }
 
-  // Validate params if schema is provided
-  if (paramsSchema && req.params) {
-    const result = paramsSchema.safeParse(req.params);
-    if (result.success) {
+    if (bodySchema) {
       // TODO: Replace with proper typing
-      validatedData.params = result.data as any;
-    } else {
-      errors.params = result.error.format();
+      validatedData.body = bodySchema.parse(req.body) as any;
     }
-  }
 
-  // Validate query if schema is provided
-  if (querySchema && req.query) {
-    const result = querySchema.safeParse(req.query);
-    if (result.success) {
+    if (paramsSchema) {
       // TODO: Replace with proper typing
-      validatedData.query = result.data as any;
-    } else {
-      errors.query = result.error.format();
+      validatedData.params = paramsSchema.parse(req.params) as any;
     }
-  }
 
-  // If there are any errors, call onFailure and return a bad request
-  if (Object.keys(errors).length > 0) {
-    return res.badRequest();
+    if (querySchema) {
+      // TODO: Replace with proper typing
+      validatedData.query = querySchema.parse(req.query) as any;
+    }
+  } catch (e) {
+    if (e instanceof ZodError) {
+      return res.badRequest("Please re-verify your request");
+    } else {
+      return res.internalServerError("Please contact support");
+    }
   }
 
   // If validation passes, call onSuccess with validated data
   return onSuccess(
     validatedData as InferValidatedData<Schemas>,
     res as FastifyReply<
+      RouteGenericInterface,
       RawServerDefault,
       RawRequestDefaultExpression,
       RawReplyDefaultExpression,
-      { Reply: ZodInfer<Schemas["replySchema"]> }
+      ContextConfigDefault,
+      FastifySchema,
+      FastifyTypeProviderDefault,
+      ZodInfer<Schemas["replySchema"]>
     >
   );
 };
