@@ -1,9 +1,9 @@
 import { ConversationChain } from "langchain/chains";
-import { dbClient } from "./db";
 import { ObjectId } from "mongodb";
 import { BufferMemory } from "langchain/memory";
 import { MongoDBChatMessageHistory } from "@langchain/mongodb";
 import { ChatOllama } from "@langchain/ollama";
+import mongoose from "mongoose";
 
 export class SessionsManager {
   private ollamaModel = new ChatOllama({
@@ -14,6 +14,7 @@ export class SessionsManager {
   constructor() {}
 
   getSession(sessionId?: string) {
+    const dbClient = mongoose.connection.getClient();
     const collection = dbClient.db("langchain").collection("memory");
     const sessionIdLocal = sessionId ?? new ObjectId().toString();
     // ----------------------------------------
@@ -30,20 +31,4 @@ export class SessionsManager {
       sessionId: sessionIdLocal,
     };
   }
-
-  // async getMessages(sessionId: string) {
-  //   const collection = dbClient.db("langchain").collection("memory");
-  //   const sessionIdLocal = sessionId ?? new ObjectId().toString();
-  //   const memory = new BufferMemory({
-  //     chatHistory: new MongoDBChatMessageHistory({
-  //       collection,
-  //       sessionId: sessionIdLocal,
-  //     }),
-  //   });
-  //   // ----------------------------------------
-  //   const historyMessages = await memory.chatHistory.getMessages();
-  //   historyMessages.forEach((message) => {
-  //     console.log({ message: message.content });
-  //   });
-  // }
 }

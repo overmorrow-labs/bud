@@ -1,12 +1,14 @@
 import fastify from "fastify";
 import fsSensible from "@fastify/sensible";
+import fsCors from "@fastify/cors";
 import { controllers } from "./controllers";
-import { dbClient } from "./services/db";
+import { services } from "./services";
 
 (async () => {
   const server = fastify({ logger: true });
   await server.register(fsSensible);
-  await dbClient.connect();
+  await server.register(fsCors, { origin: "*" });
+  await services.db(server);
 
   // ---------------------------------------------------------------
 

@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@fastify/autoload": "^6.3.0",
+    "@fastify/cors": "^11.0.1",
     "@fastify/sensible": "^6.0.3",
     "@floating-ui/react": "^0.27.7",
     "@langchain/core": "^0.3.45",
@@ -28,11 +29,13 @@
     "fastify": "^5.3.1",
     "langchain": "^0.3.23",
     "mongodb": "^6.15.0",
+    "mongoose": "^8.13.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-rnd": "^10.5.2",
     "tailwindcss": "^4.1.4",
-    "zod": "^3.24.3"
+    "zod": "^3.24.3",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
