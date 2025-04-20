@@ -1,5 +1,5 @@
-import { api } from "./api";
+import getSession from "./get-session";
 
 export const controllers = {
-  api,
+  getSession,
 };
