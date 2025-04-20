@@ -1,21 +1,24 @@
-import Fastify from "fastify";
+import fastify from "fastify";
+import fsSocketIO from "fastify-socket.io";
+import fsSensible from "@fastify/sensible";
+import { controllers } from "./controllers";
 
-const server = Fastify({
-  logger: true,
+const server = fastify({ logger: false });
+server.register(fsSocketIO);
+server.register(fsSensible);
+
+// ---------------------------------------------------------------
+
+server.get("/get-session", controllers.api.getSession);
+
+// ---------------------------------------------------------------
+
+server.ready((err) => {
+  if (err) throw err;
+  // ----------------------------------------
+  server.io.on("connection", (socket) => {
+    console.info("Socket connected!", socket.id);
+  });
 });
 
-server.get("/", async (request, reply) => {
-  return { hello: "world2" };
-});
-
-const start = async () => {
-  try {
-    await server.listen({ port: 3002, host: "0.0.0.0" });
-    console.log("Server listening on http://localhost:3002");
-  } catch (err) {
-    server.log.error(err);
-    process.exit(1);
-  }
-};
-
-start();
+server.listen({ port: 3002 });
