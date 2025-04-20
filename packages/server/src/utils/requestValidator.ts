@@ -57,8 +57,6 @@ export const requestValidator = <Schemas extends ValidationSchemas>(
     data;
   const validatedData: Partial<InferValidatedData<Schemas>> = {};
 
-  console.log(req.headers);
-
   try {
     if (headersSchema) {
       // TODO: Replace with proper typing

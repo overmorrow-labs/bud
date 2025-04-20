@@ -79,67 +79,6 @@ importers:
         specifier: ^2.2.2
         version: 2.2.2(vite@6.3.2(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
 
-  packages/demo:
-    dependencies:
-      '@tailwindcss/vite':
-        specifier: ^4.1.4
-        version: 4.1.4(vite@6.3.2(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
-      react:
-        specifier: ^19.0.0
-        version: 19.1.0
-      react-dom:
-        specifier: ^19.0.0
-        version: 19.1.0(react@19.1.0)
-      react-rnd:
-        specifier: ^10.5.2
-        version: 10.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      tailwindcss:
-        specifier: ^4.1.4
-        version: 4.1.4
-    devDependencies:
-      '@eslint/js':
-        specifier: ^9.22.0
-        version: 9.25.0
-      '@types/node':
-        specifier: ^22.14.1
-        version: 22.14.1
-      '@types/react':
-        specifier: ^19.0.10
-        version: 19.1.2
-      '@types/react-dom':
-        specifier: ^19.0.4
-        version: 19.1.2(@types/react@19.1.2)
-      '@vitejs/plugin-react':
-        specifier: ^4.3.4
-        version: 4.4.0(vite@6.3.2(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
-      eslint:
-        specifier: ^9.22.0
-        version: 9.25.0(jiti@2.4.2)
-      eslint-plugin-react-hooks:
-        specifier: ^5.2.0
-        version: 5.2.0(eslint@9.25.0(jiti@2.4.2))
-      eslint-plugin-react-refresh:
-        specifier: ^0.4.19
-        version: 0.4.19(eslint@9.25.0(jiti@2.4.2))
-      globals:
-        specifier: ^16.0.0
-        version: 16.0.0
-      typescript:
-        specifier: ~5.7.2
-        version: 5.7.3
-      typescript-eslint:
-        specifier: ^8.26.1
-        version: 8.30.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.7.3)
-      vite:
-        specifier: ^6.3.1
-        version: 6.3.2(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1)
-      vite-plugin-dts:
-        specifier: ^4.5.3
-        version: 4.5.3(@types/node@22.14.1)(rollup@4.40.0)(typescript@5.7.3)(vite@6.3.2(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
-      vite-plugin-lib-inject-css:
-        specifier: ^2.2.2
-        version: 2.2.2(vite@6.3.2(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
-
   packages/server:
     dependencies:
       '@fastify/autoload':
