@@ -1,0 +1,30 @@
+{
+  "name": "bud-server",
+  "version": "0.0.1",
+  "description": "A robust Fastify server with TypeScript, ready for development and npm packaging.",
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "fastify",
+    "typescript",
+    "server"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^4.27.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "ts-node-dev": "^2.0.0"
+  },
+  "files": [
+    "dist"
+  ]
+}
